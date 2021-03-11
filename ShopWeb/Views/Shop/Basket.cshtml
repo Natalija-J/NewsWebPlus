@@ -1,0 +1,17 @@
+﻿@model List<Day3_Classes.Item>
+
+<h1>This is basket</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>Item</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>EUR @item.Price</td>
+        </tr>
+    }
+</table>

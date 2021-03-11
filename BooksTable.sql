@@ -1,0 +1,8 @@
+﻿CREATE TABLE Books (
+Id INT NULL, 
+Title NVARCHAR(100) NULL, 
+Year INT NULL, 
+Copies INT NULL, 
+Author_Name NVARCHAR(50) NULL, 
+Author_LastName NVARCHAR(50) NULL, 
+)

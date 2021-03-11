@@ -1,0 +1,75 @@
+﻿.text-center {
+    text-align: center;    
+    font-weight: bold;
+    font-size: 20px;
+}
+table{
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+.left {
+    float: left;
+    width: 30%;
+}
+.right {
+    float: right;
+    
+}
+.style {
+    text-transform: uppercase;
+}
+.font {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: monospace, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+.colorfront {    
+    color: blue;    
+    font-size: 16px;
+}
+.colorback {
+    background: #808080;
+    color: black;
+    
+}
+.red {
+    color: red;
+    font-size: 20px;
+    border: 3px solid red;
+    padding: 20px;
+    margin: 40px;
+    border-spacing: 5px;
+    border-color: red;
+}
+.middle {
+    float: right;
+    width: 50%;
+}
+.blue {
+    color: blue;
+    font-size: 20px;
+    border: 3px double blue;
+    padding: 20px;
+    margin: 40px;
+    border-spacing: 5px;
+    border-color: blue;
+}
+.black {
+    color: black;
+    font-size: 20px;
+    border: 3px solid black;
+    padding: 20px;
+    margin: 40px;
+    border-spacing: 5px;
+    border-color: black;
+}
+.back {
+    background: black;
+    color: white;
+    font-size: 20px;
+    border: 3px solid black;
+    padding: 20px;
+    margin: 40px;
+    border-spacing: 5px;
+    border-color: black;
+}
