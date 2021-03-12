@@ -13,21 +13,21 @@
             <a class="navbar-brand" href="#">
                 <strong>NNN News</strong>
             </a>
-
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" asp-controller="Home" asp-action="Index"><h5>Latest News</h5></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="News" asp-action="Topics"><h5>Topics</h5></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="About"><h5>About Us</h5></a>
-                </li>
-            </ul>
+                       
+                <ul class="nav justify-content-end">
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                        <a class="nav-link active" asp-controller="Home" asp-action="Index"><h5>Latest News</h5></a>
+                    </li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Topics" ? "active" : "")">
+                        <a class="nav-link" asp-controller="News" asp-action="Topics"><h5>Topics</h5></a>
+                    </li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "About" ? "active" : "")">
+                        <a class="nav-link" asp-controller="Home" asp-action="About"><h5>About Us</h5></a>
+                    </li>
+                </ul>            
         </div>
 
-    </nav>
+</nav>
     <br />
     <div class="container">
         @RenderBody()       

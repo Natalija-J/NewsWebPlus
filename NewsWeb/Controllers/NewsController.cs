@@ -19,16 +19,16 @@ namespace NewsWeb.Controllers
             model.Topics = topics.GetAllTopics();
             if (id.HasValue)
             {
-                //retrieve articles
+                //get active topic
                 model.ActiveTopic = topics.GetTopic(id.Value);
-                //retrieve active topic information
+                //retrieve information of articles under that topic
                 model.Articles = articles.GetNewsByTopic(id.Value);
             }
             var info = topics.GetAllTopics();
             return View(info);
         }
 
-        public IActionResult Article()
+        public IActionResult Article(int? id)
         {
             var info = articles.GetLatestNews();
             return View(info);

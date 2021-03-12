@@ -1,6 +1,6 @@
 ﻿
 <ul class="nav nav-pills">
-    <li class="nav-item">
+    <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
         <a class="nav-link active" href="Page2.html">Latvia</a>
     </li>
     <li class="nav-item">

@@ -3,7 +3,7 @@
 <ul class="nav nav-pills mb-3">
     @foreach (var topic in Model.Topics)
     {
-        <li class="nav-item">
+        <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Topics" ? "active" : "")">
             <a class="nav-link" asp-controller="News" asp-action="Topics" asp-route-id="@topic.Id">@topic.Title</a>
         </li>
     }
