@@ -26,5 +26,29 @@ namespace News.Logic.Manager
                 return db.Topics.FirstOrDefault(topic => topic.Id == id);
             }
         }
+
+        public void CreateNewTopic(string title)
+        {
+            using(var db = new NewsDatabase())
+            {
+                if (String.IsNullOrEmpty(title))
+                {
+                    throw new LogicException("Title can't be empty!");
+                }
+                var sameTitle = db.Topics.FirstOrDefault(t => t.Title.ToLower() == title.ToLower());
+                if (sameTitle != null)
+                {
+                    throw new LogicException("Topic already exists!");
+                }
+
+                db.Topics.Add(new Topics()
+                {
+                    Title = title,
+                });
+
+                db.SaveChanges();
+            }
+
+        }
     }
 }

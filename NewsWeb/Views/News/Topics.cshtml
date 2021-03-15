@@ -3,8 +3,8 @@
 <ul class="nav nav-pills mb-3">
     @foreach (var topic in Model.Topics)
     {
-        <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Topics" ? "active" : "")">
-            <a class="nav-link" asp-controller="News" asp-action="Topics" asp-route-id="@topic.Id">@topic.Title</a>
+        <li class="nav-item ">
+            <a class="nav-link @(topic.Id == Model.ActiveTopic?.Id ? "active" : "")" asp-controller="News" asp-action="Topics" asp-route-id="@topic.Id">@topic.Title</a>
         </li>
     }
 </ul>
@@ -25,8 +25,8 @@
         {
             <div class="col-md-4 col-sm-12 mb-3">
                 <div class="card">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-                    <div class="card-body">
+                    <img class="card-img-top" src="@article.Image" alt="Card image cap">
+                     <div class="card-body">
                         <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">@article.Title</a>
                     </div>
                 </div>

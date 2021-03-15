@@ -24,14 +24,22 @@ namespace NewsWeb.Controllers
                 //retrieve information of articles under that topic
                 model.Articles = articles.GetNewsByTopic(id.Value);
             }
-            var info = topics.GetAllTopics();
-            return View(info);
+            
+            return View(model);
         }
 
         public IActionResult Article(int? id)
         {
-            var info = articles.GetLatestNews();
-            return View(info);
+            ArticleModel model = new ArticleModel();
+            if (id.HasValue)
+            {               
+                model.Article = articles.GetArticle(id.Value);
+                model.Topics = topics.GetAllTopics();
+                model.ActiveTopic = topics.GetTopic(model.Article.TopicId);
+
+            }
+            return View(model);
         }
+
     }
 }

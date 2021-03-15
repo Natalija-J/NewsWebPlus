@@ -1,40 +1,44 @@
-﻿
-<ul class="nav nav-pills">
-    <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
-        <a class="nav-link active" href="Page2.html">Latvia</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="Page2.html">World</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="Page2.html">Criminal News</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="Page2.html">Sports</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="Page2.html">Auto</a>
-    </li>
+﻿@model ArticleModel
+
+<ul class="nav nav-pills mb-3">
+    @foreach (var topic in Model.Topics)
+    {
+        <li class="nav-item">
+            <a class="nav-link @(topic.Id == Model.Article.TopicId ? "active" : "")" asp-controller="News" asp-action="Topics" asp-route-id="@topic.Id">@topic.Title</a>
+        </li>
+    }
 </ul>
-<br />
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="Page2.html">Latvia</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Article</li>
-    </ol>
-</nav>
 
-<h2>Article<span class="badge badge-secondary">New</span></h2>
+@if (Model.ActiveTopic != null)
+{
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">@Model.ActiveTopic.Title</li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Article.Title</li>
+        </ol>
+    </nav>
+}
 
 
-<h6>Author: Author <span class="badge badge-pill badge-light text-secondary">Article was added: PublishedOn</span></h6>
+
+<h6>Author: @Model.Article.Author <span class="badge badge-pill badge-light text-secondary">Article was added: @Model.Article.PublishedOn</span></h6>
 
 <div class="row">
     <div class="col-md-12">
         <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-        
+
     </div>
     <div class="col-md-12">
-        <p class="text-justify">This is where the article text goes.....</p>
+        <p class="text-justify">@Model.Article.Text</p>
     </div>
 </div>
+
+<button type="button" class="btn btn-secondary" onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+<button type="button" class="btn btn-secondary" text-allign-right onclick="goForward()">Next</button>
+<a href="#" class="next">Next &raquo;</a>
