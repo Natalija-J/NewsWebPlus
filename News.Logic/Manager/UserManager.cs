@@ -24,8 +24,8 @@ namespace News.Logic.Manager
                     throw new LogicException("This username is already taken. Please choose a different one.");
                 }
                 //3.2. Check if there isn't a user with the same e-mail already
-                var sameEmail = db.Users.FirstOrDefault(u => u.Email == email);
-                if (sameEmail != null)
+                sameUsername = db.Users.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+                if (sameUsername != null)
                 {
                     throw new LogicException("This email is already in use, please choose a different email.");
                 }
@@ -46,6 +46,15 @@ namespace News.Logic.Manager
 
                 db.SaveChanges();
             }
+
         }
+        public Users GetUser(string username, string password)
+        {
+            using (var db = new NewsDatabase())
+            {
+               return db.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower() && u.Password == password);
+            }
+        }
+        
     }
 }
