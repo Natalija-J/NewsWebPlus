@@ -21,6 +21,7 @@ namespace News.Logic.DB
 
         public virtual DbSet<Articles> Articles { get; set; }
         public virtual DbSet<Topics> Topics { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -45,9 +46,7 @@ namespace News.Logic.DB
 
                 entity.Property(e => e.PublishedOn).HasColumnType("datetime");
 
-                entity.Property(e => e.Text)
-                    .IsRequired()
-                    .HasMaxLength(2000);
+                entity.Property(e => e.Text).IsRequired();
 
                 entity.Property(e => e.Title)
                     .IsRequired()
@@ -57,6 +56,21 @@ namespace News.Logic.DB
             modelBuilder.Entity<Topics>(entity =>
             {
                 entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Username)
                     .IsRequired()
                     .HasMaxLength(50);
             });
