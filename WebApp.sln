@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day3_Shop", "..\Bootcamp1\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopConsole", "ShopConsole\ShopConsole.csproj", "{57B88374-F705-4D96-9210-C21B0EB54697}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Web", "Library.Web\Library.Web.csproj", "{E2B67562-D46B-48E9-A3DB-6333B54E4173}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML", "HTML", "{CB62B183-BE65-47A0-8C73-5FAE4A500AA5}"
 	ProjectSection(SolutionItems) = preProject
 		bootstrap.html = bootstrap.html
@@ -77,14 +75,6 @@ Global
 		{57B88374-F705-4D96-9210-C21B0EB54697}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57B88374-F705-4D96-9210-C21B0EB54697}.Release|x64.ActiveCfg = Release|Any CPU
 		{57B88374-F705-4D96-9210-C21B0EB54697}.Release|x64.Build.0 = Release|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Debug|x64.Build.0 = Debug|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Release|x64.ActiveCfg = Release|Any CPU
-		{E2B67562-D46B-48E9-A3DB-6333B54E4173}.Release|x64.Build.0 = Release|Any CPU
 		{727C95AE-DB65-4659-92DD-58FA0193535C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{727C95AE-DB65-4659-92DD-58FA0193535C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{727C95AE-DB65-4659-92DD-58FA0193535C}.Debug|x64.ActiveCfg = Debug|Any CPU
