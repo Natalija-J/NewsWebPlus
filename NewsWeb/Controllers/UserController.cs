@@ -14,9 +14,14 @@ namespace NewsWeb.Controllers
     public class UserController : Controller
     {
         private UserManager manager = new UserManager();
+
         [HttpGet]
         public IActionResult Register()
         {
+            if (HttpContext.Session.IsSignedIn())
+            {
+                return NotFound();
+            }
             return View();
         }
 
@@ -38,6 +43,17 @@ namespace NewsWeb.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            if (HttpContext.Session.IsSignedIn())
+            {
+                return NotFound();
+            }
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Login(UserLoginModel model)
         {
             if (ModelState.IsValid)
@@ -50,7 +66,9 @@ namespace NewsWeb.Controllers
                 }
                 else
                 {
-                    HttpContext.Session.SetString("username", user.Username);
+                    HttpContext.Session.SetUsername(user.Username);
+                    HttpContext.Session.SetIsAdmin(user.IsAdmin);
+
                     return RedirectToAction("Index", "Home");
                 }
             }

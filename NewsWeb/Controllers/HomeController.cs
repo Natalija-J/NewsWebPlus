@@ -24,6 +24,5 @@ namespace NewsWeb.Controllers
         {
             return View();
         }
-
     }
 }

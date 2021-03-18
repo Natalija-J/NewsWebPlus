@@ -11,6 +11,7 @@ namespace ShopWeb.Controllers
     {
         private static ShopManager manager = new ShopManager();
 
+
         // for catalogue
         public IActionResult Index()
         {
@@ -33,6 +34,11 @@ namespace ShopWeb.Controllers
             manager.AddToBasket(name);
             //sends the user back to the catalogue (Index)
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult TotalPrice()
+        {
+            var total = manager.CheckOut();
+            return View(total);
         }
     }
 }

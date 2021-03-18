@@ -24,7 +24,7 @@ namespace NewsWeb.Controllers
                 //retrieve information of articles under that topic
                 model.Articles = articles.GetNewsByTopic(id.Value);
             }
-            
+
             return View(model);
         }
 
@@ -32,7 +32,7 @@ namespace NewsWeb.Controllers
         {
             ArticleModel model = new ArticleModel();
             if (id.HasValue)
-            {               
+            {
                 model.Article = articles.GetArticle(id.Value);
                 model.Topics = topics.GetAllTopics();
                 model.ActiveTopic = topics.GetTopic(model.Article.TopicId);
@@ -41,5 +41,43 @@ namespace NewsWeb.Controllers
             return View(model);
         }
 
+        public IActionResult Index()
+        {
+            var info = articles.GetAllArticles();
+
+            return View(info);
+        }
+
+
+        public IActionResult Delete(int id)
+        {
+            articles.Delete(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        //public IActionResult Create( model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            // manager call
+        //            manager.CreateNewTopic(model.Title);
+
+        //            return RedirectToAction(nameof(Create));
+        //        }
+        //        catch (LogicException ex)
+        //        {
+        //            ModelState.AddModelError("validation", ex.Message);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // some other unexpected error
+        //            ModelState.AddModelError("validation", ex.Message);
+        //        }
+        //    }
+
+        //}
     }
 }

@@ -16,6 +16,11 @@ namespace NewsWeb.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            if (!HttpContext.Session.GetIsAdmin())
+            {
+                return NotFound();
+            }
+
             TopicModel model = new TopicModel();
             model.Topics = manager.GetAllTopics();
 
@@ -46,5 +51,19 @@ namespace NewsWeb.Controllers
             
             return View(model);
         }
+
+        public IActionResult Index()
+        {
+            var topics = manager.GetAllTopics();
+
+            return View(topics);
+        }
+        public IActionResult Delete(int id)
+        {
+            manager.Delete(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

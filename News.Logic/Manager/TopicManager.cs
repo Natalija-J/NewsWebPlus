@@ -50,5 +50,18 @@ namespace News.Logic.Manager
             }
 
         }
+
+        // method to delete a topic
+        public void Delete(int id)
+        {
+            using(var db = new NewsDatabase())
+            {
+                var topic = db.Topics.FirstOrDefault(t => t.Id == id);
+
+                db.Topics.Remove(topic);
+
+                db.SaveChanges();
+            }
+        }
     }
 }

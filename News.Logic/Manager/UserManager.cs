@@ -32,7 +32,7 @@ namespace News.Logic.Manager
 
                 //3.3. (Optional) Check if password is at least 6 symbols
                 //var longEmail = db.Users.Where(u => u.Email.Length >= 6);
-                if (email.Length < 6)
+                if (!password.IsPasswordOk())
                 {
                     throw new LogicException("The email must be at least 6 characters long!");
                 }

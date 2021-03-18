@@ -41,5 +41,58 @@ namespace News.Logic.Manager
             }
         }
 
+        public List<Articles> GetAllArticles()
+        {
+            //returns Articles, ordered by Title ASC
+            using (var db = new NewsDatabase())
+            {
+                // SELECT * FROM Topics ORDER BY Title
+                return db.Articles.OrderByDescending(a => a.PublishedOn).ToList();
+            }
+
+        }
+
+        public void CreateNewArticle(int topicId, string title, string author,  string text)
+        {
+            using (var db = new NewsDatabase())
+            {
+                if (String.IsNullOrEmpty(title))
+                {
+                    throw new LogicException("Title can't be empty!");
+                }
+
+                var sameTitle = db.Articles.FirstOrDefault(a => a.Title.ToLower() == title.ToLower());
+                if (sameTitle != null)
+                {
+                    throw new LogicException("Article already exists!");
+                }
+
+                db.Articles.Add(new Articles()
+                {
+                    TopicId = topicId,
+                    Title = title,
+                    Author = author,
+                    PublishedOn = DateTime.Now,
+                    Text = text,
+                    Image = ""
+                });
+
+                db.SaveChanges();
+
+            }
+
+        }
+        // method to delete an article
+        public void Delete(int id)
+        {
+            using (var db = new NewsDatabase())
+            {
+                var article = db.Articles.FirstOrDefault(a => a.Id == id);
+
+                db.Articles.Remove(article);
+
+                db.SaveChanges();
+            }
+        }
     }
 }
