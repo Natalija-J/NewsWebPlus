@@ -11,6 +11,8 @@ namespace NewsWeb.Models
         public List<Topics> Topics { get; set; }
         public Articles Article { get; set; }
         public Topics ActiveTopic { get; set; }
+
+
         
     }
 }

@@ -63,5 +63,17 @@ namespace News.Logic.Manager
                 db.SaveChanges();
             }
         }
+
+        public void Update(int id, string title)
+        {
+            using(var db = new NewsDatabase())
+            {
+                var topic = db.Topics.FirstOrDefault(t => t.Id == id);
+
+                topic.Title = title;
+
+                db.SaveChanges();
+            }
+        }
     }
 }

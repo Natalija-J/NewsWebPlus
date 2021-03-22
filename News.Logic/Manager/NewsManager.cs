@@ -94,5 +94,23 @@ namespace News.Logic.Manager
                 db.SaveChanges();
             }
         }
+
+        public void UpdateArticle(int id, int topicId, string title, string author, string text)
+        {
+            using(var db = new NewsDatabase())
+            {
+                //find an article
+                var article = db.Articles.FirstOrDefault(a => a.Id == id);
+
+                //update the information
+                article.Title = title;
+                article.TopicId = topicId;
+                article.Text = text;
+                article.Author = author;
+
+                //save changes in DB
+                db.SaveChanges();
+            }
+        }
     }
 }
