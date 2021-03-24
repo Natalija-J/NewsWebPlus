@@ -138,7 +138,7 @@ namespace NewsWeb.Controllers
                 return NotFound();
             }
 
-            manager.Delete(id);
+            manager1.Delete(id);
 
             return RedirectToAction(nameof(Index));
         }
